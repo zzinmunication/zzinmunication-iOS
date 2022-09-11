@@ -17,7 +17,9 @@ struct Ad {
 }
 
 final class TopicViewController: UIViewController {
+  private let searchView: TopicSearchView = .init(frame: .zero)
   private let collectionView: TopicCollectionView = .init(frame: .zero)
+
   private var topics: [Topic] = [
     .init(title: "심심할 때", comments: []),
     .init(title: "심심할 때", comments: []),
@@ -48,13 +50,18 @@ final class TopicViewController: UIViewController {
 extension TopicViewController: Presentable {
 
   func setupLayout() {
-    [collectionView].forEach {
+    [searchView, collectionView].forEach {
       view.addSubview($0)
       $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
     NSLayoutConstraint.activate([
-      collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+      searchView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      searchView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 23),
+      searchView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -23),
+      searchView.heightAnchor.constraint(equalToConstant: 38),
+
+      collectionView.topAnchor.constraint(equalTo: searchView.bottomAnchor, constant: 26),
       collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 23),
       collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
       collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -23)

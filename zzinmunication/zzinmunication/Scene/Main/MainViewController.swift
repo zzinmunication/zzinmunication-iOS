@@ -57,6 +57,11 @@ extension MainViewController: UICollectionViewDelegate {
     _ collectionView: UICollectionView,
     didSelectItemAt indexPath: IndexPath
   ) {
+    if indexPath.section == 1 {
+      let viewController = CommentViewController()
+      show(viewController, sender: self)
+    }
+
     if indexPath.section == 2 {
       let viewController = TopicViewController()
       show(viewController, sender: self)

@@ -1,5 +1,5 @@
 //
-//  GetCommentView.swift
+//  CommentView.swift
 //  zzinmunication
 //
 //  Created by 홍경표 on 2022/09/11.
@@ -7,35 +7,41 @@
 
 import UIKit
 
-final class GetCommentView: UIView {
+final class CommentView: UIView {
 
   private let containerView: UIStackView = UIStackView()
 
   private let titleLabel: UILabel = {
     let label = UILabel()
-    label.text = "변명이 필요할 때" // TODO: DI or binding
-    // TODO: 폰트 수정, numberOfLines = ?
+    label.text = "변명이 필요할 때"
+    label.font = .init(name: "NanumSquareL", size: 29)
+    label.textColor = .init(hexString: "#5A5A5A")
     label.textAlignment = .center
+
     return label
   }()
 
   private let commentContainerView: UIStackView = {
     let stackView = UIStackView()
-    stackView.backgroundColor = .systemBackground
-    // TODO: 그림자 디테일 수정
-    stackView.layer.cornerRadius = 10
-    stackView.layer.shadowColor = UIColor.black.cgColor
+    stackView.backgroundColor = .init(hexString: "#FDFDFD")
+    stackView.layer.cornerRadius = 16
+    stackView.layer.shadowColor = UIColor(hexString: "#000000", alpha: 0.16).cgColor
     stackView.layer.shadowOffset = CGSize(width: 0, height: 3)
     stackView.layer.shadowOpacity = 0.5
     stackView.layer.shadowRadius = 3.0
+
     return stackView
   }()
 
   private let commentLabel: UILabel = {
     let label = UILabel()
     label.text = "잠시 화장실 좀 다녀올게요"
-    // TODO: 폰트 수정
+    label.lineBreakMode = .byWordWrapping
+    label.numberOfLines = 0
     label.textAlignment = .center
+    label.textColor = .init(hexString: "#5A5A5A")
+    label.font = .init(name: "NanumSquareL", size: 54)
+
     return label
   }()
 
@@ -44,33 +50,52 @@ final class GetCommentView: UIView {
     stackView.axis = .horizontal
     stackView.distribution = .fill
     stackView.alignment = .bottom
+
     return stackView
   }()
 
   private let refreshLabel: UILabel = {
     let label = UILabel()
     label.text = "다른 멘트 주세요"
-    // TODO: 폰트 수정
     label.textAlignment = .right
+    label.textColor = .init(hexString: "#969696")
+    label.font = .init(name: "NanumSquareL", size: 22)
+
     return label
   }()
 
   private let refreshButton: UIButton = {
     let button = UIButton(type: .custom)
-    button.setImage(UIImage(systemName: "arrow.clockwise.circle.fill"), for: .normal) // TODO: 이미지 변경
+    button.setImage(UIImage(systemName: "arrow.clockwise"), for: .normal)
+    button.tintColor = .init(hexString: "#5A5A5A")
+    button.contentHorizontalAlignment = .fill
+    button.contentVerticalAlignment = .fill
+    button.imageEdgeInsets = UIEdgeInsets(top: 20, left: 22, bottom: 0, right: 0)
+
     return button
   }()
 
   private let tempBannerView: UIView = {
-    // TODO: 광고 넣으면 수정
     let view = UIView()
-    view.backgroundColor = .systemTeal
-    // TODO: 그림자 디테일 수정
-    view.layer.cornerRadius = 10
-    view.layer.shadowColor = UIColor.black.cgColor
+    view.backgroundColor = .init(hexString: "#CFE1F8")
+    view.layer.cornerRadius = 16
+    view.layer.shadowColor = UIColor(hexString: "#000000", alpha: 0.16).cgColor
     view.layer.shadowOffset = CGSize(width: 0, height: 3)
     view.layer.shadowOpacity = 0.5
     view.layer.shadowRadius = 3.0
+
+    let label: UILabel = .init()
+    label.font = .init(name: "NanumSquareL", size: 22)
+    label.textColor = .init(hexString: "#969696")
+    label.text = "광고"
+
+    view.addSubview(label)
+    label.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+    ])
+
     return view
   }()
 
@@ -88,18 +113,17 @@ final class GetCommentView: UIView {
 
 }
 
-extension GetCommentView: Presentable {
+extension CommentView: Presentable {
   func setupLayout() {
     containerView.axis = .vertical
     containerView.distribution = .fill
     containerView.alignment = .fill
     containerView.isLayoutMarginsRelativeArrangement = true
-    // TODO: 디테일 수정
     containerView.directionalLayoutMargins = .init(top: 50, leading: 23, bottom: 20, trailing: 23)
     containerView.addArrangedSubview(titleLabel)
-    containerView.setCustomSpacing(30, after: titleLabel)
+    containerView.setCustomSpacing(27, after: titleLabel)
     containerView.addArrangedSubview(commentContainerView)
-    containerView.setCustomSpacing(50, after: commentContainerView)
+    containerView.setCustomSpacing(58, after: commentContainerView)
     containerView.addArrangedSubview(tempBannerView)
     titleLabel.setContentHuggingPriority(.required, for: .vertical)
     tempBannerView.setContentHuggingPriority(.required, for: .vertical)
@@ -108,6 +132,8 @@ extension GetCommentView: Presentable {
     commentContainerView.axis = .vertical
     commentContainerView.distribution = .fill
     commentContainerView.alignment = .fill
+    commentContainerView.isLayoutMarginsRelativeArrangement = true
+    commentContainerView.directionalLayoutMargins = .init(top: 0, leading: 12, bottom: 8, trailing: 12)
     commentContainerView.addArrangedSubview(commentLabel)
     commentContainerView.addArrangedSubview(refreshContainerView)
     commentLabel.setContentHuggingPriority(.defaultLow, for: .vertical)
@@ -127,25 +153,25 @@ extension GetCommentView: Presentable {
       containerView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
       containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
       containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-      refreshButton.heightAnchor.constraint(equalToConstant: 30),
-      refreshButton.widthAnchor.constraint(equalToConstant: 30),
+      refreshButton.heightAnchor.constraint(equalToConstant: 60),
+      refreshButton.widthAnchor.constraint(equalTo: refreshButton.heightAnchor),
       refreshContainerView.heightAnchor.constraint(equalTo: refreshButton.heightAnchor),
       tempBannerView.heightAnchor.constraint(equalToConstant: 50)
     ])
   }
 
   func setupUI() {
-    self.backgroundColor = .systemBackground
+    self.backgroundColor = .white
   }
 }
 
 // MARK: Preview
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI
-struct GetCommentViewPreview: PreviewProvider {
+struct CommentViewPreview: PreviewProvider {
   static var previews: some View {
     Group {
-      UIViewPreview { GetCommentView() }
+      UIViewPreview { CommentView() }
     }
   }
 }

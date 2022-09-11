@@ -8,7 +8,7 @@
 @testable import zzinmunication
 import Foundation
 
-struct GetCommentServiceMock: GetCommentServiceable {
+struct GetCommentServiceMock: CommentServiceable {
 
   private struct Joke: Codable {
     let value: String

@@ -38,7 +38,7 @@ extension TitleSupplementaryView: Presentable {
     NSLayoutConstraint.activate([
       titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
       titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-      titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 24)
+      titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24)
     ])
   }
 

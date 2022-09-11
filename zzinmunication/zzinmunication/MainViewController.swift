@@ -53,7 +53,10 @@ extension MainViewController: UICollectionViewDataSource {
   func numberOfSections(in collectionView: UICollectionView) -> Int {
     2
   }
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  func collectionView(
+    _ collectionView: UICollectionView,
+    numberOfItemsInSection section: Int
+  ) -> Int {
     switch section {
     case 0: return 1
     case 1: return 6
@@ -61,7 +64,10 @@ extension MainViewController: UICollectionViewDataSource {
     }
   }
 
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+  func collectionView(
+    _ collectionView: UICollectionView,
+    cellForItemAt indexPath: IndexPath
+  ) -> UICollectionViewCell {
     switch indexPath.section {
     case 0:
       let cell = collectionView.dequeueReusableCell(for: indexPath) as AdvertisementCell
@@ -80,6 +86,21 @@ extension MainViewController: UICollectionViewDataSource {
     default:
       return UICollectionViewCell()
     }
+  }
+
+  func collectionView(
+    _ collectionView: UICollectionView,
+    viewForSupplementaryElementOfKind kind: String,
+    at indexPath: IndexPath
+  ) -> UICollectionReusableView {
+    let headerView = collectionView.dequeueReusableSupplementaryView(
+      ofKind: MainCollectionView.ElementKind.title,
+      for: indexPath
+    ) as TitleSupplementaryView
+
+    headerView.title = "찐들의 대화"
+    
+    return headerView
   }
 }
 

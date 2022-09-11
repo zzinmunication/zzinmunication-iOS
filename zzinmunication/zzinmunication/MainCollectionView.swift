@@ -73,6 +73,9 @@ private extension MainCollectionView {
 
     let section = NSCollectionLayoutSection(group: group)
     section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 6, trailing: 0)
+    section.boundarySupplementaryItems = [
+      titleSupplementaryItem(heightDimension: .absolute(77))
+    ]
 
     return section
   }

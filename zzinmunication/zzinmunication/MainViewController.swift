@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  zzinmunication
 //
 //  Created by itzel.du on 2022/09/11.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class MainViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -16,4 +16,3 @@ class ViewController: UIViewController {
 
 
 }
-

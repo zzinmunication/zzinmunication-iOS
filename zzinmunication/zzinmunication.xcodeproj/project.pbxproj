@@ -12,6 +12,8 @@
 		D4BFBCB828CDE88B00516344 /* GetCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBCB728CDE88B00516344 /* GetCommentView.swift */; };
 		D4BFBCBA28CDE96200516344 /* UIViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBCB928CDE96200516344 /* UIViewPreview.swift */; };
 		D4BFBCBC28CDFB0600516344 /* GetCommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBCBB28CDFB0600516344 /* GetCommentService.swift */; };
+		D4BFBCBE28CE063400516344 /* URLSession+dataFrom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBCBD28CE063400516344 /* URLSession+dataFrom.swift */; };
+		D4BFBCC028CE0A0B00516344 /* GetCommentServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBCBF28CE0A0B00516344 /* GetCommentServiceMock.swift */; };
 		E2D81DC528CD103B00B67406 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D81DC428CD103B00B67406 /* AppDelegate.swift */; };
 		E2D81DC728CD103B00B67406 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D81DC628CD103B00B67406 /* SceneDelegate.swift */; };
 		E2D81DC928CD103B00B67406 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D81DC828CD103B00B67406 /* MainViewController.swift */; };
@@ -56,6 +58,8 @@
 		D4BFBCB728CDE88B00516344 /* GetCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCommentView.swift; sourceTree = "<group>"; };
 		D4BFBCB928CDE96200516344 /* UIViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPreview.swift; sourceTree = "<group>"; };
 		D4BFBCBB28CDFB0600516344 /* GetCommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCommentService.swift; sourceTree = "<group>"; };
+		D4BFBCBD28CE063400516344 /* URLSession+dataFrom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+dataFrom.swift"; sourceTree = "<group>"; };
+		D4BFBCBF28CE0A0B00516344 /* GetCommentServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCommentServiceMock.swift; sourceTree = "<group>"; };
 		E2D81DC128CD103B00B67406 /* zzinmunication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zzinmunication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2D81DC428CD103B00B67406 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2D81DC628CD103B00B67406 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 				D4BFBCB728CDE88B00516344 /* GetCommentView.swift */,
 				D4BFBCBB28CDFB0600516344 /* GetCommentService.swift */,
 				D4BFBCB928CDE96200516344 /* UIViewPreview.swift */,
+				D4BFBCBD28CE063400516344 /* URLSession+dataFrom.swift */,
 				E2D81DCD28CD103C00B67406 /* Assets.xcassets */,
 				E2D81DCF28CD103C00B67406 /* LaunchScreen.storyboard */,
 				E2D81E0528CDFC7200B67406 /* NanumSquareBold.ttf */,
@@ -199,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				E2D81DDB28CD103C00B67406 /* zzinmunicationTests.swift */,
+				D4BFBCBF28CE0A0B00516344 /* GetCommentServiceMock.swift */,
 			);
 			path = zzinmunicationTests;
 			sourceTree = "<group>";
@@ -353,6 +359,7 @@
 				E2D81E0028CDEF0C00B67406 /* TitleSupplementaryView.swift in Sources */,
 				E289AD8228CE0AFE005A6DD1 /* ListViewController.swift in Sources */,
 				D4BFBCB628CDE77700516344 /* GetCommentViewController.swift in Sources */,
+				D4BFBCBE28CE063400516344 /* URLSession+dataFrom.swift in Sources */,
 				D4BFBCBC28CDFB0600516344 /* GetCommentService.swift in Sources */,
 				E2D81DF628CDB9FF00B67406 /* MainCollectionView.swift in Sources */,
 				D4BFBCBA28CDE96200516344 /* UIViewPreview.swift in Sources */,
@@ -368,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4BFBCC028CE0A0B00516344 /* GetCommentServiceMock.swift in Sources */,
 				E2D81DDC28CD103C00B67406 /* zzinmunicationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -586,7 +594,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yeonduing.zzinmunicationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -605,7 +613,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yeonduing.zzinmunicationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

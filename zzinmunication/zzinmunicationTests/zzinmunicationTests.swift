@@ -19,11 +19,23 @@ class zzinmunicationTests: XCTestCase {
     }
 
     func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+      let expect = expectation(description: "")
+      let service = GetCommentServiceMock()
+      Task {
+        do {
+          let comment = try await service.fetchRandomComment(forCategory: "변명이 필요할 때")
+          print("@@", comment)
+          XCTAssertEqual(comment, "잠시 화장실 좀 다녀올게요")
+          expect.fulfill()
+        } catch {
+          XCTFail(error.localizedDescription)
+        }
+      }
+      waitForExpectations(timeout: 5) { error in
+        if let error = error {
+          XCTFail("\(error.localizedDescription)")
+        }
+      }
     }
 
     func testPerformanceExample() throws {

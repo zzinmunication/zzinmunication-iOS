@@ -35,6 +35,7 @@ private extension MainCollectionView {
   func registerViews() {
     registerCell(ofType: AdvertisementCell.self)
     registerCell(ofType: MainTopicCell.self)
+    registerCell(ofType: MainMoreCell.self)
     registerSupplementaryView(
       ofType: TitleSupplementaryView.self,
       ofKind: ElementKind.title
@@ -58,6 +59,7 @@ private extension MainCollectionView {
     switch sectionIndex {
     case 0: return layoutSectionForAdvertisement()
     case 1: return layoutSectionForTopic()
+    case 2: return layoutSectionForMore()
     default: return nil
     }
   }
@@ -93,6 +95,21 @@ private extension MainCollectionView {
     let section = NSCollectionLayoutSection(group: group)
     section.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 0, bottom: 6, trailing: 0)
     section.interGroupSpacing = 14
+
+    return section
+  }
+
+  static func layoutSectionForMore() -> NSCollectionLayoutSection {
+    let itemSize = NSCollectionLayoutSize(
+      widthDimension: .fractionalWidth(1.0),
+      heightDimension: .absolute(65)
+    )
+    let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+    let group = NSCollectionLayoutGroup.horizontal(layoutSize: itemSize, subitem: item, count: 1)
+
+    let section = NSCollectionLayoutSection(group: group)
+    section.contentInsets = NSDirectionalEdgeInsets(top: 21, leading: 0, bottom: 0, trailing: 0)
 
     return section
   }

@@ -51,7 +51,7 @@ extension MainViewController: UICollectionViewDelegate {
 
 extension MainViewController: UICollectionViewDataSource {
   func numberOfSections(in collectionView: UICollectionView) -> Int {
-    2
+    3
   }
   func collectionView(
     _ collectionView: UICollectionView,
@@ -60,6 +60,7 @@ extension MainViewController: UICollectionViewDataSource {
     switch section {
     case 0: return 1
     case 1: return 6
+    case 2: return 1
     default: return 0
     }
   }
@@ -83,6 +84,13 @@ extension MainViewController: UICollectionViewDataSource {
 
       return cell
 
+    case 2:
+      let cell = collectionView.dequeueReusableCell(for: indexPath) as MainMoreCell
+      let viewModel = MainMoreCellViewModel(title: "더 보러 가기")
+      cell.configure(withViewModel: viewModel)
+
+      return cell
+
     default:
       return UICollectionViewCell()
     }
@@ -99,7 +107,7 @@ extension MainViewController: UICollectionViewDataSource {
     ) as TitleSupplementaryView
 
     headerView.title = "찐들의 대화"
-    
+
     return headerView
   }
 }

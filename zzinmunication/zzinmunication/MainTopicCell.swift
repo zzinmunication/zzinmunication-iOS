@@ -20,17 +20,20 @@ final class MainTopicCellViewModel: MainCellViewModelType {
   let backgroundColor: UIColor
   let title: String
   let titleColor: UIColor
+  let cornerMask: CACornerMask
 
   init(
     backgroundImage: UIImage? = nil,
     backgroundColor: UIColor = UIColor(hexString: "#FDFDFD"),
     title: String,
-    titleColor: UIColor = UIColor(hexString: "#5A5A5A")
+    titleColor: UIColor = UIColor(hexString: "#5A5A5A"),
+    cornerMask: CACornerMask = []
   ) {
     self.backgroundImage = backgroundImage
     self.backgroundColor = backgroundColor
     self.title = title
     self.titleColor = titleColor
+    self.cornerMask = cornerMask
   }
 }
 
@@ -66,8 +69,7 @@ extension MainTopicCell: Configuable {
     backgroundColor = viewModel.backgroundColor
     titleLabel.text = viewModel.title
     titleLabel.textColor = viewModel.titleColor
-
-    layer.maskedCorners = [.layerMinXMinYCorner]
+    layer.maskedCorners = viewModel.cornerMask
   }
 }
 

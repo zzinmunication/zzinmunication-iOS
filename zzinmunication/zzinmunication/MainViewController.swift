@@ -50,14 +50,48 @@ extension MainViewController: UICollectionViewDelegate {
 }
 
 extension MainViewController: UICollectionViewDataSource {
+  func numberOfSections(in collectionView: UICollectionView) -> Int {
+    2
+  }
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    6
+    switch section {
+    case 0: return 1
+    case 1: return 6
+    default: return 0
+    }
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(for: indexPath) as MainTopicCell
+    switch indexPath.section {
+    case 0:
+      let cell = collectionView.dequeueReusableCell(for: indexPath) as AdvertisementCell
+      let viewModel = advertisementCellViewModel(at: indexPath.row)
+      cell.configure(withViewModel: viewModel)
+
+      return cell
+
+    case 1:
+      let cell = collectionView.dequeueReusableCell(for: indexPath) as MainTopicCell
+      let viewModel = mainTopicCellViewModel(at: indexPath.row)
+      cell.configure(withViewModel: viewModel)
+
+      return cell
+
+    default:
+      return UICollectionViewCell()
+    }
+  }
+}
+
+private extension MainViewController {
+
+  func advertisementCellViewModel(at row: Int) -> AdvertisementCellViewModel {
+    return .init(title: "광고", cornerMask: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
+  }
+
+  func mainTopicCellViewModel(at row: Int) -> MainTopicCellViewModel {
     let viewModel: MainTopicCellViewModel
-    switch indexPath.row {
+    switch row {
     case 0:
       viewModel = .init(
         backgroundImage: UIImage(named: "main_cell_eat"),
@@ -66,11 +100,13 @@ extension MainViewController: UICollectionViewDataSource {
     밥
     먹을 때
 """,
-        titleColor: UIColor(hexString: "#EAEAEA")
+        titleColor: UIColor(hexString: "#EAEAEA"),
+        cornerMask: [.layerMinXMinYCorner]
       )
     case 1:
       viewModel = .init(
-        title: "심심할 때"
+        title: "심심할 때",
+        cornerMask: [.layerMaxXMinYCorner]
       )
     case 2:
       viewModel = .init(
@@ -94,7 +130,8 @@ extension MainViewController: UICollectionViewDataSource {
 소개팅
 할 때
 """,
-        titleColor: UIColor(hexString: "#EAEAEA")
+        titleColor: UIColor(hexString: "#EAEAEA"),
+        cornerMask: [.layerMinXMaxYCorner]
       )
     default:
       viewModel = .init(
@@ -103,12 +140,11 @@ extension MainViewController: UICollectionViewDataSource {
 권유를
 받았을 때
 """,
-        titleColor: UIColor(hexString: "#A7DBC5")
+        titleColor: UIColor(hexString: "#A7DBC5"),
+        cornerMask: [.layerMaxXMaxYCorner]
       )
     }
 
-    cell.configure(withViewModel: viewModel)
-
-    return cell
+    return viewModel
   }
 }

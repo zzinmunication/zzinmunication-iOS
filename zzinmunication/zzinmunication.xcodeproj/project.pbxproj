@@ -19,6 +19,8 @@
 		E2D81DF828CDC62600B67406 /* MainTopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D81DF728CDC62600B67406 /* MainTopicCell.swift */; };
 		E2D81DFA28CDC69E00B67406 /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D81DF928CDC69E00B67406 /* UICollectionView+.swift */; };
 		E2D81DFC28CDD92A00B67406 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D81DFB28CDD92A00B67406 /* UIColor+.swift */; };
+		E2D81DFE28CDEADE00B67406 /* AdvertisementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D81DFD28CDEADE00B67406 /* AdvertisementCell.swift */; };
+		E2D81E0028CDEF0C00B67406 /* TitleSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D81DFF28CDEF0C00B67406 /* TitleSupplementaryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		E2D81DF728CDC62600B67406 /* MainTopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTopicCell.swift; sourceTree = "<group>"; };
 		E2D81DF928CDC69E00B67406 /* UICollectionView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+.swift"; sourceTree = "<group>"; };
 		E2D81DFB28CDD92A00B67406 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		E2D81DFD28CDEADE00B67406 /* AdvertisementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementCell.swift; sourceTree = "<group>"; };
+		E2D81DFF28CDEF0C00B67406 /* TitleSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSupplementaryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,8 @@
 				E2D81DC828CD103B00B67406 /* MainViewController.swift */,
 				E2D81DF528CDB9FF00B67406 /* MainCollectionView.swift */,
 				E2D81DF728CDC62600B67406 /* MainTopicCell.swift */,
+				E2D81DFD28CDEADE00B67406 /* AdvertisementCell.swift */,
+				E2D81DFF28CDEF0C00B67406 /* TitleSupplementaryView.swift */,
 				E2D81DF928CDC69E00B67406 /* UICollectionView+.swift */,
 				E2D81DFB28CDD92A00B67406 /* UIColor+.swift */,
 				E2D81DCD28CD103C00B67406 /* Assets.xcassets */,
@@ -269,9 +275,11 @@
 				E2D81DC928CD103B00B67406 /* MainViewController.swift in Sources */,
 				E2D81DC528CD103B00B67406 /* AppDelegate.swift in Sources */,
 				E2D81DC728CD103B00B67406 /* SceneDelegate.swift in Sources */,
+				E2D81E0028CDEF0C00B67406 /* TitleSupplementaryView.swift in Sources */,
 				E2D81DF628CDB9FF00B67406 /* MainCollectionView.swift in Sources */,
 				E2D81DFA28CDC69E00B67406 /* UICollectionView+.swift in Sources */,
 				E2D81DF828CDC62600B67406 /* MainTopicCell.swift in Sources */,
+				E2D81DFE28CDEADE00B67406 /* AdvertisementCell.swift in Sources */,
 				E2D81DFC28CDD92A00B67406 /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

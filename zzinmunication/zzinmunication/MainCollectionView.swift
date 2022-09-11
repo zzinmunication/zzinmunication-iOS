@@ -26,18 +26,19 @@ final class MainCollectionView: UICollectionView {
   }
 
   enum ElementKind {
-    static let advertisement = "advertisement-element-kind"
+    static let title = "title-element-kind"
   }
 }
 
 private extension MainCollectionView {
 
   func registerViews() {
+    registerCell(ofType: AdvertisementCell.self)
     registerCell(ofType: MainTopicCell.self)
-//    registerSupplementaryView(
-//      ofType: TitleSupplementaryView.self,
-//      ofKind: ElementKind.advertisement
-//    )
+    registerSupplementaryView(
+      ofType: TitleSupplementaryView.self,
+      ofKind: ElementKind.title
+    )
   }
 
   func setupView() {
@@ -55,9 +56,25 @@ private extension MainCollectionView {
     layoutEnvironment: NSCollectionLayoutEnvironment
   ) -> NSCollectionLayoutSection? {
     switch sectionIndex {
-    case 0: return layoutSectionForTopic()
+    case 0: return layoutSectionForAdvertisement()
+    case 1: return layoutSectionForTopic()
     default: return nil
     }
+  }
+
+  static func layoutSectionForAdvertisement() -> NSCollectionLayoutSection {
+    let itemSize = NSCollectionLayoutSize(
+      widthDimension: .fractionalWidth(1.0),
+      heightDimension: .absolute(56)
+    )
+    let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+    let group = NSCollectionLayoutGroup.horizontal(layoutSize: itemSize, subitem: item, count: 1)
+
+    let section = NSCollectionLayoutSection(group: group)
+    section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 6, trailing: 0)
+
+    return section
   }
 
   static func layoutSectionForTopic() -> NSCollectionLayoutSection {
@@ -71,26 +88,23 @@ private extension MainCollectionView {
     group.interItemSpacing = .fixed(13)
 
     let section = NSCollectionLayoutSection(group: group)
-    section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+    section.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 0, bottom: 6, trailing: 0)
     section.interGroupSpacing = 14
-//    section.boundarySupplementaryItems = [
-//      titleSupplementaryItem(heightDimension: .estimated(68))
-//    ]
 
     return section
   }
 
-//  static func titleSupplementaryItem(
-//    heightDimension: NSCollectionLayoutDimension
-//  ) -> NSCollectionLayoutBoundarySupplementaryItem {
-//    let layoutSize = NSCollectionLayoutSize(
-//      widthDimension: .fractionalWidth(1.0),
-//      heightDimension: heightDimension
-//    )
-//    return NSCollectionLayoutBoundarySupplementaryItem(
-//      layoutSize: layoutSize,
-//      elementKind: ElementKind.advertisement,
-//      alignment: .topLeading
-//    )
-//  }
+  static func titleSupplementaryItem(
+    heightDimension: NSCollectionLayoutDimension
+  ) -> NSCollectionLayoutBoundarySupplementaryItem {
+    let layoutSize = NSCollectionLayoutSize(
+      widthDimension: .fractionalWidth(1.0),
+      heightDimension: heightDimension
+    )
+    return NSCollectionLayoutBoundarySupplementaryItem(
+      layoutSize: layoutSize,
+      elementKind: ElementKind.title,
+      alignment: .topLeading
+    )
+  }
 }

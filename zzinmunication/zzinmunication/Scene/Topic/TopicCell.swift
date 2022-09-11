@@ -1,23 +1,21 @@
 //
-//  AdvertisementCell.swift
+//  TopicCell.swift
 //  zzinmunication
 //
-//  Created by itzel.du on 2022/09/11.
+//  Created by itzel.du on 2022/09/12.
 //
 
 import UIKit
 
-final class AdvertisementCellViewModel: MainCellViewModelType {
+final class TopicCellViewModel {
   let title: String
-  let cornerMask: CACornerMask
 
-  init(title: String, cornerMask: CACornerMask = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner]) {
+  init(title: String) {
     self.title = title
-    self.cornerMask = cornerMask
   }
 }
 
-final class AdvertisementCell: UICollectionViewCell {
+final class TopicCell: UICollectionViewCell {
   private let titleLabel: UILabel = .init()
 
   override init(frame: CGRect) {
@@ -35,19 +33,11 @@ final class AdvertisementCell: UICollectionViewCell {
   override func prepareForReuse() {
     super.prepareForReuse()
 
-    layer.maskedCorners = []
+    titleLabel.text = nil
   }
 }
 
-extension AdvertisementCell: Configuable {
-
-  func configure(withViewModel viewModel: AdvertisementCellViewModel) {
-    titleLabel.text = viewModel.title
-    layer.maskedCorners = viewModel.cornerMask
-  }
-}
-
-extension AdvertisementCell: Presentable {
+extension TopicCell: Presentable {
 
   func setupLayout() {
     contentView.addSubview(titleLabel)
@@ -60,14 +50,23 @@ extension AdvertisementCell: Presentable {
   }
 
   func setupUI() {
-    backgroundColor = UIColor(hexString: "#CFE1F8")
+    backgroundColor = .init(hexString: "#FDFDFD")
+
     titleLabel.font = .init(name: "NanumSquareL", size: 22)
-    titleLabel.textColor = UIColor(hexString: "#969696")
+    titleLabel.textColor = .init(hexString: "#969696")
+
     layer.cornerRadius = 16
   }
 }
 
-private extension AdvertisementCell {
+extension TopicCell: Configuable {
+
+  func configure(withViewModel viewModel: TopicCellViewModel) {
+    titleLabel.text = viewModel.title
+  }
+}
+
+private extension TopicCell {
 
   func setupShadow() {
     layer.masksToBounds = false
@@ -78,3 +77,4 @@ private extension AdvertisementCell {
     layer.shadowPath = UIBezierPath(roundedRect: layer.bounds, cornerRadius: layer.cornerRadius).cgPath
   }
 }
+

@@ -58,7 +58,7 @@ extension MainViewController: UICollectionViewDelegate {
     didSelectItemAt indexPath: IndexPath
   ) {
     if indexPath.section == 2 {
-      let viewController = ListViewController()
+      let viewController = TopicViewController()
       show(viewController, sender: self)
     }
   }

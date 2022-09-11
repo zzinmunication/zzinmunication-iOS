@@ -111,6 +111,6 @@ private extension MainTopicCell {
     layer.shadowRadius = 6 / 2
     layer.shadowColor = UIColor(hexString: "#000000", alpha: 0.16).cgColor
     layer.shadowOpacity = 0.5
-    layer.shadowPath = UIBezierPath(rect: CGRect(x: 0, y: 3, width: layer.bounds.width, height: layer.bounds.height)).cgPath
+    layer.shadowPath = UIBezierPath(roundedRect: layer.bounds, cornerRadius: layer.cornerRadius).cgPath
   }
 }

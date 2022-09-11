@@ -110,11 +110,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D4BFBCC528CE40C900516344 /* GetComment */ = {
+			isa = PBXGroup;
+			children = (
+				D4BFBCB528CDE77700516344 /* GetCommentViewController.swift */,
+				D4BFBCB728CDE88B00516344 /* GetCommentView.swift */,
+				D4BFBCBB28CDFB0600516344 /* GetCommentService.swift */,
+			);
+			path = GetComment;
+			sourceTree = "<group>";
+		};
 		E289AD7C28CE0A9F005A6DD1 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
 				E289AD7D28CE0AAB005A6DD1 /* Main */,
 				E289AD8028CE0AD5005A6DD1 /* List */,
+				D4BFBCC528CE40C900516344 /* GetComment */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -146,6 +157,8 @@
 			children = (
 				E2D81DF928CDC69E00B67406 /* UICollectionView+.swift */,
 				E2D81DFB28CDD92A00B67406 /* UIColor+.swift */,
+				D4BFBCBD28CE063400516344 /* URLSession+dataFrom.swift */,
+				D4BFBCB928CDE96200516344 /* UIViewPreview.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -184,11 +197,6 @@
 				E289AD7E28CE0AB9005A6DD1 /* App */,
 				E289AD7C28CE0A9F005A6DD1 /* Scene */,
 				E289AD7F28CE0AC4005A6DD1 /* Extension */,
-				D4BFBCB528CDE77700516344 /* GetCommentViewController.swift */,
-				D4BFBCB728CDE88B00516344 /* GetCommentView.swift */,
-				D4BFBCBB28CDFB0600516344 /* GetCommentService.swift */,
-				D4BFBCB928CDE96200516344 /* UIViewPreview.swift */,
-				D4BFBCBD28CE063400516344 /* URLSession+dataFrom.swift */,
 				E2D81DCD28CD103C00B67406 /* Assets.xcassets */,
 				E2D81DCF28CD103C00B67406 /* LaunchScreen.storyboard */,
 				E2D81E0528CDFC7200B67406 /* NanumSquareBold.ttf */,

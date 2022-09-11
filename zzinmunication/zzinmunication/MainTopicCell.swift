@@ -95,7 +95,7 @@ extension MainTopicCell: Presentable {
   }
 
   func setupUI() {
-    titleLabel.font = .systemFont(ofSize: 22)
+    titleLabel.font = .init(name: "NanumSquareB", size: 22)
     titleLabel.textAlignment = .right
     titleLabel.numberOfLines = 0
 

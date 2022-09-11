@@ -61,7 +61,7 @@ extension AdvertisementCell: Presentable {
 
   func setupUI() {
     backgroundColor = UIColor(hexString: "#CFE1F8")
-    titleLabel.font = .systemFont(ofSize: 22)
+    titleLabel.font = .init(name: "NanumSquareL", size: 22)
     titleLabel.textColor = UIColor(hexString: "#969696")
     layer.cornerRadius = 16
   }

@@ -22,6 +22,10 @@
 		E2D81DFE28CDEADE00B67406 /* AdvertisementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D81DFD28CDEADE00B67406 /* AdvertisementCell.swift */; };
 		E2D81E0028CDEF0C00B67406 /* TitleSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D81DFF28CDEF0C00B67406 /* TitleSupplementaryView.swift */; };
 		E2D81E0228CDF7FE00B67406 /* MainMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D81E0128CDF7FE00B67406 /* MainMoreCell.swift */; };
+		E2D81E0728CDFC7F00B67406 /* NanumSquareBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2D81E0528CDFC7200B67406 /* NanumSquareBold.ttf */; };
+		E2D81E0828CDFC8300B67406 /* NanumSquareExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2D81E0328CDFC7200B67406 /* NanumSquareExtraBold.ttf */; };
+		E2D81E0928CDFC8300B67406 /* NanumSquareLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2D81E0628CDFC7200B67406 /* NanumSquareLight.ttf */; };
+		E2D81E0A28CDFC8300B67406 /* NanumSquareRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2D81E0428CDFC7200B67406 /* NanumSquareRegular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,10 @@
 		E2D81DFD28CDEADE00B67406 /* AdvertisementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementCell.swift; sourceTree = "<group>"; };
 		E2D81DFF28CDEF0C00B67406 /* TitleSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSupplementaryView.swift; sourceTree = "<group>"; };
 		E2D81E0128CDF7FE00B67406 /* MainMoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMoreCell.swift; sourceTree = "<group>"; };
+		E2D81E0328CDFC7200B67406 /* NanumSquareExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareExtraBold.ttf; sourceTree = "<group>"; };
+		E2D81E0428CDFC7200B67406 /* NanumSquareRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRegular.ttf; sourceTree = "<group>"; };
+		E2D81E0528CDFC7200B67406 /* NanumSquareBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareBold.ttf; sourceTree = "<group>"; };
+		E2D81E0628CDFC7200B67406 /* NanumSquareLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareLight.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +131,10 @@
 				E2D81DFB28CDD92A00B67406 /* UIColor+.swift */,
 				E2D81DCD28CD103C00B67406 /* Assets.xcassets */,
 				E2D81DCF28CD103C00B67406 /* LaunchScreen.storyboard */,
+				E2D81E0528CDFC7200B67406 /* NanumSquareBold.ttf */,
+				E2D81E0328CDFC7200B67406 /* NanumSquareExtraBold.ttf */,
+				E2D81E0628CDFC7200B67406 /* NanumSquareLight.ttf */,
+				E2D81E0428CDFC7200B67406 /* NanumSquareRegular.ttf */,
 				E2D81DD228CD103C00B67406 /* Info.plist */,
 			);
 			path = zzinmunication;
@@ -250,6 +262,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2D81DD128CD103C00B67406 /* LaunchScreen.storyboard in Resources */,
+				E2D81E0928CDFC8300B67406 /* NanumSquareLight.ttf in Resources */,
+				E2D81E0A28CDFC8300B67406 /* NanumSquareRegular.ttf in Resources */,
+				E2D81E0828CDFC8300B67406 /* NanumSquareExtraBold.ttf in Resources */,
+				E2D81E0728CDFC7F00B67406 /* NanumSquareBold.ttf in Resources */,
 				E2D81DCE28CD103C00B67406 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

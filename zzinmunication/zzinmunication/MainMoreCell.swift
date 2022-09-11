@@ -71,7 +71,7 @@ extension MainMoreCell: Presentable {
   func setupUI() {
     backgroundColor = UIColor(hexString: "#FDFDFD")
 
-    titleLabel.font = .systemFont(ofSize: 22)
+    titleLabel.font = .init(name: "NanumSquareL", size: 22)
     titleLabel.textColor = UIColor(hexString: "#969696")
     titleLabel.textAlignment = .right
 

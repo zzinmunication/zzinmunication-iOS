@@ -43,7 +43,12 @@ extension TitleSupplementaryView: Presentable {
   }
 
   func setupUI() {
-    titleLabel.font = .systemFont(ofSize: 41)
+    titleLabel.font = .init(name: "NanumSquareL", size: 41)
     titleLabel.textColor = UIColor(hexString: "#969696")
+
+    for family in UIFont.familyNames.sorted() {
+        let names = UIFont.fontNames(forFamilyName: family)
+        print("Family: \(family) Font names: \(names)")
+    }
   }
 }

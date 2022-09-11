@@ -19,11 +19,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard let windowScene = (scene as? UIWindowScene)
     else { return }
 
+    UINavigationBar.appearance().backIndicatorImage = UIImage(systemName: "arrow.backward")
+    UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.backward")
+
     window = UIWindow(windowScene: windowScene)
 
     let mainViewController = MainViewController()
+    let navigationViewController = UINavigationController(rootViewController: mainViewController)
 
-    window?.rootViewController = mainViewController
+    window?.rootViewController = navigationViewController
     window?.makeKeyAndVisible()
   }
 }

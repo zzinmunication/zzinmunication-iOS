@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E289AD8228CE0AFE005A6DD1 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E289AD8128CE0AFE005A6DD1 /* ListViewController.swift */; };
 		E2D81DC528CD103B00B67406 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D81DC428CD103B00B67406 /* AppDelegate.swift */; };
 		E2D81DC728CD103B00B67406 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D81DC628CD103B00B67406 /* SceneDelegate.swift */; };
 		E2D81DC928CD103B00B67406 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D81DC828CD103B00B67406 /* MainViewController.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E289AD8128CE0AFE005A6DD1 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		E2D81DC128CD103B00B67406 /* zzinmunication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zzinmunication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2D81DC428CD103B00B67406 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2D81DC628CD103B00B67406 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +98,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E289AD7C28CE0A9F005A6DD1 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				E289AD7D28CE0AAB005A6DD1 /* Main */,
+				E289AD8028CE0AD5005A6DD1 /* List */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		E289AD7D28CE0AAB005A6DD1 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E2D81DC828CD103B00B67406 /* MainViewController.swift */,
+				E2D81DF528CDB9FF00B67406 /* MainCollectionView.swift */,
+				E2D81DF728CDC62600B67406 /* MainTopicCell.swift */,
+				E2D81DFD28CDEADE00B67406 /* AdvertisementCell.swift */,
+				E2D81E0128CDF7FE00B67406 /* MainMoreCell.swift */,
+				E2D81DFF28CDEF0C00B67406 /* TitleSupplementaryView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		E289AD7E28CE0AB9005A6DD1 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				E2D81DC428CD103B00B67406 /* AppDelegate.swift */,
+				E2D81DC628CD103B00B67406 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		E289AD7F28CE0AC4005A6DD1 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E2D81DF928CDC69E00B67406 /* UICollectionView+.swift */,
+				E2D81DFB28CDD92A00B67406 /* UIColor+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		E289AD8028CE0AD5005A6DD1 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				E289AD8128CE0AFE005A6DD1 /* ListViewController.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
 		E2D81DB828CD103B00B67406 = {
 			isa = PBXGroup;
 			children = (
@@ -119,16 +169,9 @@
 		E2D81DC328CD103B00B67406 /* zzinmunication */ = {
 			isa = PBXGroup;
 			children = (
-				E2D81DC428CD103B00B67406 /* AppDelegate.swift */,
-				E2D81DC628CD103B00B67406 /* SceneDelegate.swift */,
-				E2D81DC828CD103B00B67406 /* MainViewController.swift */,
-				E2D81DF528CDB9FF00B67406 /* MainCollectionView.swift */,
-				E2D81DF728CDC62600B67406 /* MainTopicCell.swift */,
-				E2D81DFD28CDEADE00B67406 /* AdvertisementCell.swift */,
-				E2D81E0128CDF7FE00B67406 /* MainMoreCell.swift */,
-				E2D81DFF28CDEF0C00B67406 /* TitleSupplementaryView.swift */,
-				E2D81DF928CDC69E00B67406 /* UICollectionView+.swift */,
-				E2D81DFB28CDD92A00B67406 /* UIColor+.swift */,
+				E289AD7E28CE0AB9005A6DD1 /* App */,
+				E289AD7C28CE0A9F005A6DD1 /* Scene */,
+				E289AD7F28CE0AC4005A6DD1 /* Extension */,
 				E2D81DCD28CD103C00B67406 /* Assets.xcassets */,
 				E2D81DCF28CD103C00B67406 /* LaunchScreen.storyboard */,
 				E2D81E0528CDFC7200B67406 /* NanumSquareBold.ttf */,
@@ -296,6 +339,7 @@
 				E2D81DC528CD103B00B67406 /* AppDelegate.swift in Sources */,
 				E2D81DC728CD103B00B67406 /* SceneDelegate.swift in Sources */,
 				E2D81E0028CDEF0C00B67406 /* TitleSupplementaryView.swift in Sources */,
+				E289AD8228CE0AFE005A6DD1 /* ListViewController.swift in Sources */,
 				E2D81DF628CDB9FF00B67406 /* MainCollectionView.swift in Sources */,
 				E2D81DFA28CDC69E00B67406 /* UICollectionView+.swift in Sources */,
 				E2D81DF828CDC62600B67406 /* MainTopicCell.swift in Sources */,

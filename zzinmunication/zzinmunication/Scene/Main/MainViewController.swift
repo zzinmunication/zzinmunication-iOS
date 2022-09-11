@@ -24,6 +24,12 @@ final class MainViewController: UIViewController {
     collectionView.delegate = self
     collectionView.dataSource = self
   }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+
+    navigationController?.navigationBar.isHidden = true
+  }
 }
 
 extension MainViewController: Presentable {
@@ -47,6 +53,15 @@ extension MainViewController: Presentable {
 
 extension MainViewController: UICollectionViewDelegate {
 
+  func collectionView(
+    _ collectionView: UICollectionView,
+    didSelectItemAt indexPath: IndexPath
+  ) {
+    if indexPath.section == 2 {
+      let viewController = ListViewController()
+      show(viewController, sender: self)
+    }
+  }
 }
 
 extension MainViewController: UICollectionViewDataSource {

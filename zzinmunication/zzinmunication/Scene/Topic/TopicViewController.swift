@@ -19,24 +19,19 @@ final class TopicViewController: UIViewController {
 
   private lazy var dataSource = makeDataSource()
 
-  private var topics: [Topic] = [
-    .init(title: "심심할 때", comments: []),
-    .init(title: "심심할 때", comments: []),
-    .init(title: "심심할 때", comments: []),
-    .init(title: "심심할 때", comments: []),
-    .init(title: "심심할 때", comments: []),
-    .init(title: "심심할 때", comments: []),
-    .init(title: "심심할 때", comments: []),
-    .init(title: "심심할 때", comments: [])
-  ]
+  private var topics: [Topic] = [] 
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    loadData()
+
     setupLayout()
     setupUI()
+
     applySnapshot(animatingDifferences: false, topics: topics)
     searchView.textField.delegate = self
+    collectionView.delegate = self
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -114,6 +109,25 @@ private extension TopicViewController {
     }
     dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
   }
+
+  func loadData() {
+    guard let url = URL(string: "https://zzinmunication.github.io/zzinmunication_dataset.json")
+    else { fatalError("Invalid URL") }
+
+    let networkManager = NetworkManager()
+
+    networkManager.request(fromURL: url) { [weak self] (result: Result<[MainTopicResponse], Error>) in
+      switch result {
+      case .success(let topicResponses):
+        let topics = topicResponses.map { Topic(title: $0.title, comments: $0.comments) }
+        self?.topics = topics
+        self?.applySnapshot(topics: topics)
+        debugPrint("We got a successful result with \(topics.count) topics.")
+      case .failure(let error):
+        debugPrint("We got a failure trying to get the users. The error we got was: \(error.localizedDescription)")
+      }
+    }
+  }
 }
 
 extension TopicViewController: UITextFieldDelegate {
@@ -126,5 +140,15 @@ extension TopicViewController: UITextFieldDelegate {
     }
 
     applySnapshot(topics: topics.filter { $0.title.contains(text) })
+  }
+}
+
+extension TopicViewController: UICollectionViewDelegate {
+
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let topic = topics[indexPath.row]
+    let commentViewModel: CommentViewModel = .init(title: topic.title, comments: topic.comments)
+    let viewController = CommentViewController(viewModel: commentViewModel)
+    show(viewController, sender: self)
   }
 }

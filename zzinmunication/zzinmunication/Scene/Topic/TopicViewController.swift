@@ -7,18 +7,17 @@
 
 import UIKit
 
-struct Topic {
+struct Topic: Hashable {
+  let id: UUID = .init()
   let title: String
   let comments: [String]
-}
-
-struct Ad {
-  let title: String
 }
 
 final class TopicViewController: UIViewController {
   private let searchView: TopicSearchView = .init(frame: .zero)
   private let collectionView: TopicCollectionView = .init(frame: .zero)
+
+  private lazy var dataSource = makeDataSource()
 
   private var topics: [Topic] = [
     .init(title: "심심할 때", comments: []),
@@ -30,27 +29,33 @@ final class TopicViewController: UIViewController {
     .init(title: "심심할 때", comments: []),
     .init(title: "심심할 때", comments: [])
   ]
-  private var ads: [Ad] = [.init(title: "광고"), .init(title: "광고")]
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    collectionView.dataSource = self
     setupLayout()
     setupUI()
+    applySnapshot(animatingDifferences: false, topics: topics)
+    searchView.textField.delegate = self
   }
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
-    navigationController?.navigationBar.isHidden = false
+    let navigationBar = navigationController?.navigationBar
+    navigationBar?.isHidden = false
+    navigationBar?.barTintColor = .white
+    navigationBar?.isTranslucent = true
+    navigationBar?.setBackgroundImage(UIImage(), for: .default)
+    navigationBar?.shadowImage = UIImage()
+    navigationBar?.backgroundColor = .white
   }
 }
 
 extension TopicViewController: Presentable {
 
   func setupLayout() {
-    [searchView, collectionView].forEach {
+    [collectionView, searchView].forEach {
       view.addSubview($0)
       $0.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -80,25 +85,46 @@ extension TopicViewController: Presentable {
   }
 }
 
-extension TopicViewController: UICollectionViewDataSource {
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    topics.count + ads.count
+private extension TopicViewController {
+  typealias DataSource = UICollectionViewDiffableDataSource<Section, Topic>
+  typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Topic>
+
+  enum Section: CaseIterable {
+    case topic
   }
 
-  func collectionView(
-    _ collectionView: UICollectionView,
-    cellForItemAt indexPath: IndexPath
-  ) -> UICollectionViewCell {
-    if indexPath.row % 5 == 0 {
-      let cell = collectionView.dequeueReusableCell(for: indexPath) as AdvertisementCell
-      cell.configure(withViewModel: .init(title: ads[indexPath.row / 5].title))
+  func makeDataSource() -> DataSource {
+    let dataSource = DataSource(
+      collectionView: collectionView,
+      cellProvider: { (collectionView, indexPath, topic) -> UICollectionViewCell? in
+        let cell = collectionView.dequeueReusableCell(for: indexPath) as TopicCell
+        cell.configure(withViewModel: .init(title: topic.title))
 
-      return cell
+        return cell
+    })
+    return dataSource
+  }
+
+  func applySnapshot(animatingDifferences: Bool = true, topics: [Topic]) {
+    var snapshot = Snapshot()
+    let sections = Section.allCases
+    snapshot.appendSections(sections)
+    sections.forEach { section in
+      snapshot.appendItems(topics, toSection: section)
+    }
+    dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
+  }
+}
+
+extension TopicViewController: UITextFieldDelegate {
+
+  func textFieldDidChangeSelection(_ textField: UITextField) {
+    guard let text = textField.text,
+          !text.isEmpty else {
+      applySnapshot(topics: topics)
+      return
     }
 
-    let cell = collectionView.dequeueReusableCell(for: indexPath) as TopicCell
-    cell.configure(withViewModel: .init(title: topics[indexPath.row - (indexPath.row / 5) - 1].title))
-
-    return cell
+    applySnapshot(topics: topics.filter { $0.title.contains(text) })
   }
 }

@@ -9,7 +9,7 @@ import UIKit
 
 final class TopicSearchView: UIView {
   private let iconImageView: UIImageView = .init()
-  private let textField: UITextField = .init()
+  let textField: UITextField = .init()
 
   override init(frame: CGRect) {
     super.init(frame: frame)

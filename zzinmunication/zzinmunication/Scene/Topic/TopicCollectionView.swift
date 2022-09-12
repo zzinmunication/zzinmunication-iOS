@@ -34,7 +34,7 @@ private extension TopicCollectionView {
   }
 
   func setupView() {
-    backgroundColor = .systemBackground
+    backgroundColor = .white
     showsVerticalScrollIndicator = false
 
     layer.masksToBounds = false

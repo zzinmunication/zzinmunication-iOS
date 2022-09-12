@@ -13,6 +13,8 @@
 		D4BFBCBC28CDFB0600516344 /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBCBB28CDFB0600516344 /* CommentService.swift */; };
 		D4BFBCBE28CE063400516344 /* URLSession+dataFrom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBCBD28CE063400516344 /* URLSession+dataFrom.swift */; };
 		D4BFBCC028CE0A0B00516344 /* GetCommentServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BFBCBF28CE0A0B00516344 /* GetCommentServiceMock.swift */; };
+		E24141C828CF7811003546EE /* MainTopicResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24141C728CF7811003546EE /* MainTopicResponse.swift */; };
+		E24141CA28CF7887003546EE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24141C928CF7887003546EE /* NetworkManager.swift */; };
 		E289AD8628CE36C9005A6DD1 /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E289AD8528CE36C9005A6DD1 /* TopicCell.swift */; };
 		E289AD8828CE403A005A6DD1 /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E289AD8728CE403A005A6DD1 /* TopicViewController.swift */; };
 		E289AD8A28CE40E7005A6DD1 /* TopicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E289AD8928CE40E7005A6DD1 /* TopicCollectionView.swift */; };
@@ -62,6 +64,8 @@
 		D4BFBCBB28CDFB0600516344 /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
 		D4BFBCBD28CE063400516344 /* URLSession+dataFrom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+dataFrom.swift"; sourceTree = "<group>"; };
 		D4BFBCBF28CE0A0B00516344 /* GetCommentServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCommentServiceMock.swift; sourceTree = "<group>"; };
+		E24141C728CF7811003546EE /* MainTopicResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTopicResponse.swift; sourceTree = "<group>"; };
+		E24141C928CF7887003546EE /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E289AD8528CE36C9005A6DD1 /* TopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
 		E289AD8728CE403A005A6DD1 /* TopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicViewController.swift; sourceTree = "<group>"; };
 		E289AD8928CE40E7005A6DD1 /* TopicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCollectionView.swift; sourceTree = "<group>"; };
@@ -124,6 +128,15 @@
 				D4BFBCBB28CDFB0600516344 /* CommentService.swift */,
 			);
 			path = Comment;
+			sourceTree = "<group>";
+		};
+		E24141C628CF77D8003546EE /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E24141C728CF7811003546EE /* MainTopicResponse.swift */,
+				E24141C928CF7887003546EE /* NetworkManager.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		E289AD7C28CE0A9F005A6DD1 /* Scene */ = {
@@ -206,6 +219,7 @@
 				E289AD7E28CE0AB9005A6DD1 /* App */,
 				E289AD7C28CE0A9F005A6DD1 /* Scene */,
 				E289AD7F28CE0AC4005A6DD1 /* Extension */,
+				E24141C628CF77D8003546EE /* Network */,
 				E2D81DCD28CD103C00B67406 /* Assets.xcassets */,
 				E2D81DCF28CD103C00B67406 /* LaunchScreen.storyboard */,
 				E2D81E0528CDFC7200B67406 /* NanumSquareBold.ttf */,
@@ -372,6 +386,7 @@
 				E2D81E0228CDF7FE00B67406 /* MainMoreCell.swift in Sources */,
 				E2D81DC928CD103B00B67406 /* MainViewController.swift in Sources */,
 				E2D81DC528CD103B00B67406 /* AppDelegate.swift in Sources */,
+				E24141CA28CF7887003546EE /* NetworkManager.swift in Sources */,
 				E2D81DC728CD103B00B67406 /* SceneDelegate.swift in Sources */,
 				E289AD8628CE36C9005A6DD1 /* TopicCell.swift in Sources */,
 				E2D81E0028CDEF0C00B67406 /* TitleSupplementaryView.swift in Sources */,
@@ -382,6 +397,7 @@
 				D4BFBCBC28CDFB0600516344 /* CommentService.swift in Sources */,
 				E2D81DF628CDB9FF00B67406 /* MainCollectionView.swift in Sources */,
 				D4BFBCBA28CDE96200516344 /* UIViewPreview.swift in Sources */,
+				E24141C828CF7811003546EE /* MainTopicResponse.swift in Sources */,
 				D4BFBCB828CDE88B00516344 /* CommentView.swift in Sources */,
 				E2D81DFA28CDC69E00B67406 /* UICollectionView+.swift in Sources */,
 				E289AD8C28CE62C5005A6DD1 /* TopicSearchView.swift in Sources */,

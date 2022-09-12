@@ -14,9 +14,16 @@ protocol Presentable {
 
 final class MainViewController: UIViewController {
   private let collectionView: MainCollectionView = .init(frame: .zero)
+  private var mainTopicviewModels: [MainTopicCellViewModel] = [] {
+    didSet {
+      collectionView.reloadData()
+    }
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    loadData()
 
     setupLayout()
     setupUI()
@@ -99,8 +106,9 @@ extension MainViewController: UICollectionViewDataSource {
 
     case 1:
       let cell = collectionView.dequeueReusableCell(for: indexPath) as MainTopicCell
-      let viewModel = mainTopicCellViewModel(at: indexPath.row)
-      cell.configure(withViewModel: viewModel)
+      if let viewModel = mainTopicCellViewModel(at: indexPath.row) {
+        cell.configure(withViewModel: viewModel)
+      }
 
       return cell
 
@@ -138,62 +146,63 @@ private extension MainViewController {
     return .init(title: "광고", cornerMask: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
   }
 
-  func mainTopicCellViewModel(at row: Int) -> MainTopicCellViewModel {
-    let viewModel: MainTopicCellViewModel
-    switch row {
-    case 0:
-      viewModel = .init(
-        backgroundImage: UIImage(named: "main_cell_eat"),
-        backgroundColor: UIColor(hexString: "#DB7669"),
-        title: """
-    밥
-    먹을 때
-""",
-        titleColor: UIColor(hexString: "#EAEAEA"),
-        cornerMask: [.layerMinXMinYCorner]
-      )
-    case 1:
-      viewModel = .init(
-        title: "심심할 때",
-        cornerMask: [.layerMaxXMinYCorner]
-      )
-    case 2:
-      viewModel = .init(
-        title: "사과할 때",
-        titleColor: UIColor(hexString: "#DB7669")
-      )
-    case 3:
-      viewModel = .init(
-        backgroundImage: UIImage(named: "main_cell_request"),
-        backgroundColor: UIColor(hexString: "#FDEE9A"),
-        title: """
-        변명이
-        필요할 때
-        """
-      )
-    case 4:
-      viewModel = .init(
-        backgroundImage: UIImage(named: "main_cell_meeting"),
-        backgroundColor: UIColor(hexString: "#A7DBC5"),
-        title: """
-소개팅
-할 때
-""",
-        titleColor: UIColor(hexString: "#EAEAEA"),
-        cornerMask: [.layerMinXMaxYCorner]
-      )
-    default:
-      viewModel = .init(
-        title: """
-길거리에서
-권유를
-받았을 때
-""",
-        titleColor: UIColor(hexString: "#A7DBC5"),
-        cornerMask: [.layerMaxXMaxYCorner]
-      )
+  func mainTopicCellViewModel(at row: Int) -> MainTopicCellViewModel? {
+    if row < mainTopicviewModels.count {
+      return mainTopicviewModels[row]
+    }
+    return nil
+  }
+
+  func loadData() {
+    guard let url = URL(string: "https://zzinmunication.github.io/main-iOS.json")
+    else { fatalError("Invalid URL") }
+
+    let networkManager = NetworkManager()
+
+    networkManager.request(fromURL: url) { [weak self] (result: Result<[MainTopicResponse], Error>) in
+      switch result {
+      case .success(let topics):
+        self?.mainTopicviewModels = topics.enumerated().map { index, topic in
+          switch index {
+          case 0: return MainTopicCellViewModel(topic, cornerMask: [.layerMinXMinYCorner])
+          case 1: return MainTopicCellViewModel(topic, cornerMask: [.layerMaxXMinYCorner])
+          case 2: return MainTopicCellViewModel(topic)
+          case 3: return MainTopicCellViewModel(topic)
+          case 4: return MainTopicCellViewModel(topic, cornerMask: [.layerMinXMaxYCorner])
+          default: return MainTopicCellViewModel(topic, cornerMask: [.layerMaxXMaxYCorner])
+          }
+        }
+        debugPrint("We got a successful result with \(topics.count) topics.")
+      case .failure(let error):
+        debugPrint("We got a failure trying to get the users. The error we got was: \(error.localizedDescription)")
+      }
+    }
+  }
+}
+
+private extension MainTopicCellViewModel {
+  convenience init(_ response: MainTopicResponse, cornerMask: CACornerMask = []) {
+    var backgroundImage: UIImage? = nil
+    if let backgroundImageName = response.backgroundImage {
+      backgroundImage = UIImage(named: backgroundImageName)
     }
 
-    return viewModel
+    var backgroundColor: UIColor = .init(hexString: "#FDFDFD")
+    if let backgroundColorHex = response.backgroundColor {
+      backgroundColor = .init(hexString: backgroundColorHex)
+    }
+
+    var titleColor: UIColor = .init(hexString: "#5A5A5A")
+    if let titleColorHex = response.titleColor {
+      titleColor = .init(hexString: titleColorHex)
+    }
+
+    self.init(
+      backgroundImage: backgroundImage,
+      backgroundColor: backgroundColor,
+      title: response.title,
+      titleColor: titleColor,
+      cornerMask: cornerMask
+    )
   }
 }

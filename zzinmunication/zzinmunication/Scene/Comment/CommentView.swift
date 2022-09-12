@@ -7,13 +7,18 @@
 
 import UIKit
 
+struct CommentViewModel {
+  let title: String
+  let comments: [String]
+}
+
 final class CommentView: UIView {
 
   private let containerView: UIStackView = UIStackView()
+  private var viewModel: CommentViewModel?
 
   private let titleLabel: UILabel = {
     let label = UILabel()
-    label.text = "변명이 필요할 때"
     label.font = .init(name: "NanumSquareL", size: 29)
     label.textColor = .init(hexString: "#5A5A5A")
     label.textAlignment = .center
@@ -35,7 +40,6 @@ final class CommentView: UIView {
 
   private let commentLabel: UILabel = {
     let label = UILabel()
-    label.text = "잠시 화장실 좀 다녀올게요"
     label.lineBreakMode = .byWordWrapping
     label.numberOfLines = 0
     label.textAlignment = .center
@@ -71,6 +75,7 @@ final class CommentView: UIView {
     button.contentHorizontalAlignment = .fill
     button.contentVerticalAlignment = .fill
     button.imageEdgeInsets = UIEdgeInsets(top: 20, left: 22, bottom: 0, right: 0)
+    button.addTarget(self, action: #selector(didTouchRefreshButton), for: .touchUpInside)
 
     return button
   }()
@@ -162,6 +167,24 @@ extension CommentView: Presentable {
 
   func setupUI() {
     self.backgroundColor = .white
+  }
+}
+
+extension CommentView: Configuable {
+
+  func configure(withViewModel viewModel: CommentViewModel) {
+    self.viewModel = viewModel
+
+    titleLabel.text = viewModel.title
+    commentLabel.text = viewModel.comments.randomElement()
+  }
+}
+
+private extension CommentView {
+
+  @objc
+  func didTouchRefreshButton() {
+    commentLabel.text = viewModel?.comments.randomElement()
   }
 }
 

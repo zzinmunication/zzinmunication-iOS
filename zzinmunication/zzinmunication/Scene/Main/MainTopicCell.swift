@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol Configuable: UICollectionViewCell {
+protocol Configuable {
   associatedtype ViewModelType
 
   func configure(withViewModel viewModel: ViewModelType)
@@ -19,6 +19,7 @@ final class MainTopicCellViewModel: MainCellViewModelType {
   let backgroundImage: UIImage?
   let backgroundColor: UIColor
   let title: String
+  let comments: [String]
   let titleColor: UIColor
   let cornerMask: CACornerMask
 
@@ -26,12 +27,14 @@ final class MainTopicCellViewModel: MainCellViewModelType {
     backgroundImage: UIImage? = nil,
     backgroundColor: UIColor = UIColor(hexString: "#FDFDFD"),
     title: String,
+    comments: [String] = [],
     titleColor: UIColor = UIColor(hexString: "#5A5A5A"),
     cornerMask: CACornerMask = []
   ) {
     self.backgroundImage = backgroundImage
     self.backgroundColor = backgroundColor
     self.title = title
+    self.comments = comments
     self.titleColor = titleColor
     self.cornerMask = cornerMask
   }

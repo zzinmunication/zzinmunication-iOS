@@ -65,7 +65,10 @@ extension MainViewController: UICollectionViewDelegate {
     didSelectItemAt indexPath: IndexPath
   ) {
     if indexPath.section == 1 {
-      let viewController = CommentViewController()
+      let mainTopicViewModel = mainTopicviewModels[indexPath.row]
+      let title = mainTopicViewModel.title.split(separator: "\n").reduce("") { $0 + $1 + " "}.trimmingCharacters(in: .whitespaces)
+      let commentViewModel: CommentViewModel = .init(title: title, comments: mainTopicViewModel.comments)
+      let viewController = CommentViewController(viewModel: commentViewModel)
       show(viewController, sender: self)
     }
 
@@ -201,6 +204,7 @@ private extension MainTopicCellViewModel {
       backgroundImage: backgroundImage,
       backgroundColor: backgroundColor,
       title: response.title,
+      comments: response.comments,
       titleColor: titleColor,
       cornerMask: cornerMask
     )
